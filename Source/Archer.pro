@@ -27,26 +27,18 @@ INCLUDEPATH += ./Archer
 
 
 
-
-
-
-
-
-
-
-
-
 DEFINES += "USE_QTCREATOR"
 DEFINES += "ARCHER_API=  "
 
-DEFINES += "BlueprintCallable" \
+DEFINES += "BlueprintCallable" "Blueprintable"  \
            "BlueprintImplementableEvent" \
            "BlueprintNativeEvent" \
            "_Implementation" "VisibleAnywhere" \
             "EditAnywhere" "BlueprintReadWrite" \
             "Category" "BlueprintReadOnly" \
             "Transient" "VisibleDefaultsOnly" \
-            "EditDefaultsOnly"
+            "EditDefaultsOnly" "EditInstanceOnly" \
+            "AllowPrivateAccess"
 
 
 #####
@@ -66,7 +58,42 @@ HEADERS += \
     Archer/Camera/ArcherPlayerCameraManager.h \
     Archer/Camera/OrbitalCameraActor.h \
     Archer/Camera/PrecisionCameraActor.h \
+    Archer/Character/Animation/CharacterAnimInstance.h \
+    Archer/Character/Animation/CharacterAnimationSlots.h \
+    Archer/Character/Animation/CharacterAnimationStates.h \
+    Archer/Character/Animation/CharacterAnimations.h \
+    Archer/Character/ArcherCharacter.h \
+    Archer/Character/CharacterBase.h \
+    Archer/Character/Mechanics/ArchTrace.h \
+    Archer/Character/Mechanics/CharacterMechanics.h \
+    Archer/Character/Movement/CharacterMovement.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStateMachine.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/ClimbState.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/DashState.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/JumpState.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/LocomotionStateBase.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/RunState.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/Slowmo.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/WalkState.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/AimReadyState.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/AutoAimState.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/EmptyState.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/FreeAimState.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/MechanicStateBase.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/PrecisionAimState.h \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/ShieldState.h \
+    Archer/Character/StateMachines/StateBase.h \
+    Archer/Character/StateMachines/StateMachineBase.h \
+    Archer/Enemies/Enemy.h \
+    Archer/General/ArcherGameInstance.h \
+    Archer/General/ArcherGameMode.h \
+    Archer/General/ArcherGameState.h \
+    Archer/Level/InteractiveElement.h \
+    Archer/Level/RoomManager.h \
+    Archer/Player/ArcherPlayerController.h \
     Archer/TimeManagement/SlowTimeManager.h \
+    Archer/Utilities/Debug.h \
     Archer/Weapons/Projectile.h
 
 SOURCES += \
@@ -79,6 +106,38 @@ SOURCES += \
     Archer/Camera/ArcherPlayerCameraManager.cpp \
     Archer/Camera/OrbitalCameraActor.cpp \
     Archer/Camera/PrecisionCameraActor.cpp \
+    Archer/Character/Animation/CharacterAnimInstance.cpp \
+    Archer/Character/Animation/CharacterAnimations.cpp \
+    Archer/Character/ArcherCharacter.cpp \
+    Archer/Character/CharacterBase.cpp \
+    Archer/Character/Mechanics/ArchTrace.cpp \
+    Archer/Character/Mechanics/CharacterMechanics.cpp \
+    Archer/Character/Movement/CharacterMovement.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStateMachine.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/ClimbState.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/DashState.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/JumpState.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/LocomotionStateBase.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/RunState.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/Slowmo.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/WalkState.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/AimReadyState.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/AutoAimState.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/EmptyState.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/FreeAimState.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/MechanicStateBase.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/PrecisionAimState.cpp \
+    Archer/Character/StateMachines/Mechanics/MechanicsStates/ShieldState.cpp \
+    Archer/Character/StateMachines/StateBase.cpp \
+    Archer/Character/StateMachines/StateMachineBase.cpp \
+    Archer/Enemies/Enemy.cpp \
+    Archer/General/ArcherGameInstance.cpp \
+    Archer/General/ArcherGameMode.cpp \
+    Archer/General/ArcherGameState.cpp \
+    Archer/Level/InteractiveElement.cpp \
+    Archer/Level/RoomManager.cpp \
+    Archer/Player/ArcherPlayerController.cpp \
     Archer/TimeManagement/SlowTimeManager.cpp \
     Archer/Weapons/Projectile.cpp
 

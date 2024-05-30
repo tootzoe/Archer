@@ -4,19 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "WaveSystem.generated.h"
+#include "RoomManager.generated.h"
 
 UCLASS()
-class ARCHER_API AWaveSystem : public AActor
+class ARCHER_API ARoomManager : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AWaveSystem();
-
-    UPROPERTY(EditAnywhere , BlueprintReadWrite)
-    TArray<AActor*> SpawnLocations;
+	ARoomManager();
 
     virtual void Tick(float DeltaTime) override;
 
@@ -24,10 +21,15 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-    void StartNextWave();
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    USceneComponent *Root;
 
-  //  UPROPERTY(EditDefaultsOnly)
-  //  TSubclassOf<AEnemy> EnemyClass;
+    UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+    USceneComponent *CameraPivot;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+    class UBoxComponent *PlayerCollision;
+
 
 
 
