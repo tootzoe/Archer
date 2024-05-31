@@ -13,9 +13,37 @@
 /**
  * 
  */
-class ARCHER_API FShieldState : FMechanicStateBase
+class FShieldState : FMechanicStateBase
 {
 public:
-    FShieldState();
-    ~FShieldState();
+    FShieldState(FStateMachineBase *MechanicStateMachine) :
+        FMechanicStateBase(MechanicStateMachine)
+    {}
+   // ~FShieldState();
+
+    virtual void Begin() override;
+    virtual void End() override;
+    virtual void Tick(float DeltaTime) override;
+
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,9 +9,13 @@
 /**
  * 
  */
-class ARCHER_API FClimbState : public FLocomotionStateBase
+class  FClimbState : public FLocomotionStateBase
 {
 public:
-    FClimbState();
+    explicit FClimbState(FStateMachineBase *StateMachin);
     ~FClimbState();
+
+    virtual void Begin() override;
+    virtual void End() override;
+
 };

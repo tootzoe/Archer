@@ -6,12 +6,61 @@
 
 
 
+
+class APlayerCameraManager ;
+class UCharacterMovementComponent;
+
 /**
  * 
  */
-class ARCHER_API FCharacterMovement
+class  FCharacterMovement
 {
 public:
-    FCharacterMovement();
+    explicit FCharacterMovement(UCharacterMovementComponent *MovementComponent);
     ~FCharacterMovement();
+
+    FVector GetCameraRelativeForwardVector() const;
+    FVector GetCameraRelativeRightVector() const;
+
+    void MoveForward(float val) const;
+    void MoveRight(float val) const;
+    void SetCameraManager(APlayerCameraManager *cm);
+    void SetWalkSpeed() const;
+    void SetRunSpeed() const;
+
+
+   private:
+
+    const float WalkSpeed = 500.f;
+    const float RunSpeed = 800.f;
+
+    UCharacterMovementComponent *MovementComponent;
+    APlayerCameraManager *CameraManager;
+
+    FVector GetProjectedVector(const FVector vector) const;
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

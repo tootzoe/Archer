@@ -14,18 +14,54 @@
 /**
  * 
  */
-class ARCHER_API FMechanicsStateMachine : public FStateMachineBase
+class FMechanicsStateMachine : public FStateMachineBase
 {
 
 
 public:
-    FMechanicsStateMachine();
+   explicit  FMechanicsStateMachine(AArcherCharacter *ArcherCharacter);
     ~FMechanicsStateMachine();
 
+    ActionSignature StartAimingDelegate;
+    ActionSignature StopAimingDelegate;
+    ActionSignature StartShootingDelegate;
+    ActionSignature StoptShootingDelegate;
+    ActionSignature StartFreeAimDelegate;
+    ActionSignature StopFreeAimDelegate;
+
+    MovementSignature AimXValueDelegate;
+    MovementSignature AimYValueDelegate;
+
+    void Tick(float DeltaTime);
+
+    void SetEmptyState();
+    void SetAimReadyState();
+    void SetFreeAimState();
+    void SetAutoAimState();
+    void SetPrecisionAimState();
 
 
+protected:
+    virtual void SetSpecificState() override;
 
 
-
+private:
+    class FMechanicStateBase* MechanicState;
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

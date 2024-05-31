@@ -4,16 +4,19 @@
 
 #include "CoreMinimal.h"
 
+
+
 #include "LocomotionStateBase.h"
 
 /**
  * 
  */
-class FDashState : public FLocomotionStateBase
+class  FSlowmoState : public FLocomotionStateBase
 {
 public:
-    explicit FDashState(FStateMachineBase *StateMachin);
-    ~FDashState();
+   explicit FSlowmoState(FStateMachineBase *StateMachine) ;
+
+    ~FSlowmoState();
 
     virtual void Begin() override;
     virtual void End() override;

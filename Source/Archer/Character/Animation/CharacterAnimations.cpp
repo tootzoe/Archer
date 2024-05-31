@@ -1,5 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "CharacterAnimInstance.h"
+
 
 #include "CharacterAnimations.h"
 
@@ -29,6 +31,47 @@ void UCharacterAnimations::TickComponent(float DeltaTime, ELevelTick TickType, F
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+    // ...
 }
+
+void UCharacterAnimations::Initialie(UCharacterAnimInstance *AnimInstance)
+{
+    AnimaInstance = AnimInstance;
+}
+
+void UCharacterAnimations::SetLocomotionState(ECharacterLocomotionState State) const
+{
+    if(!AnimaInstance) return;
+     AnimaInstance->SetLocomotionState(State);
+}
+
+void UCharacterAnimations::SetAttactState(ECharacterAttactState State) const
+{
+    if(!AnimaInstance) return;
+     AnimaInstance->SetAttactState(State);
+}
+
+void UCharacterAnimations::SetOrientationType(EOrientationType OrientaionType)
+{
+    if(!AnimaInstance) return;
+     AnimaInstance->SetOrientationType(OrientaionType);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

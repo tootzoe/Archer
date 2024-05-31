@@ -9,9 +9,24 @@
 /**
  * 
  */
-class ARCHER_API FAimReadyState : public FMechanicStateBase
+class   FAimReadyState : public FMechanicStateBase
 {
 public:
-    FAimReadyState();
-    ~FAimReadyState();
+    FAimReadyState(FStateMachineBase *MechanicStateMachine) :
+        FMechanicStateBase(MechanicStateMachine)
+    {}
+
+
+    virtual void Begin() override;
+    virtual void End() override;
+    virtual void Tick(float DeltaTime) override;
+
+private:
+    bool IsFreeAimExpected = false;
+
+    void SetAimState() const;
+    void SetFreeAimExpected();
+    void SetFreeAimNotExpected();
+
+
 };

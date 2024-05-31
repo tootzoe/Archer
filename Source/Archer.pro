@@ -10,6 +10,7 @@ INCLUDEPATH += $$UE_ROOT/Engine/Source \
                            $$UE_ROOT/Engine/Intermediate/Build/Win64/UE4Editor/Inc/Engine/UHT \
                            $$UE_ROOT/Engine/Source/Runtime \
                            $$UE_ROOT/Engine/Source/Runtime/Engine/Classes \
+                           $$UE_ROOT/Engine/Source/Runtime/Engine/FTimerManager \
                            $$UE_ROOT/Engine/Source/Runtime/Engine/Public \
                            $$UE_ROOT/Engine/Source/Runtime/TraceLog/Public \
                            $$UE_ROOT/Engine/Source/Runtime/Core/Public \
@@ -73,7 +74,7 @@ HEADERS += \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/JumpState.h \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/LocomotionStateBase.h \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/RunState.h \
-    Archer/Character/StateMachines/Locomotion/LocomotionStates/Slowmo.h \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/SlowmoState.h \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/WalkState.h \
     Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.h \
     Archer/Character/StateMachines/Mechanics/MechanicsStates/AimReadyState.h \
@@ -119,7 +120,7 @@ SOURCES += \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/JumpState.cpp \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/LocomotionStateBase.cpp \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/RunState.cpp \
-    Archer/Character/StateMachines/Locomotion/LocomotionStates/Slowmo.cpp \
+    Archer/Character/StateMachines/Locomotion/LocomotionStates/SlowmoState.cpp \
     Archer/Character/StateMachines/Locomotion/LocomotionStates/WalkState.cpp \
     Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.cpp \
     Archer/Character/StateMachines/Mechanics/MechanicsStates/AimReadyState.cpp \

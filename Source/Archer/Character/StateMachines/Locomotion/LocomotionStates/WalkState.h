@@ -9,9 +9,13 @@
 /**
  * 
  */
-class ARCHER_API FWalkState : public FLocomotionStateBase
+class  FWalkState : public FLocomotionStateBase
 {
 public:
-    FWalkState();
+    explicit FWalkState(FStateMachineBase *StateMachin);
     ~FWalkState();
+
+    virtual void Begin() override;
+    virtual void End() override;
+
 };

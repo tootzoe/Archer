@@ -7,14 +7,40 @@
 #include "../../StateBase.h"
 
 
-
-
+class FMechanicsStateMachine;
+class FStateMachineBase;
 /**
  * 
  */
-class ARCHER_API FMechanicStateBase : public FStateBase
+class  FMechanicStateBase : public FStateBase
 {
 public:
-    FMechanicStateBase();
-    ~FMechanicStateBase();
+    explicit FMechanicStateBase(FStateMachineBase *MechanicsStateMachine);
+
+
+    virtual void Begin() override;
+    virtual void Tick(float DeltaTime) = 0;
+
+protected:
+    FMechanicsStateMachine *MechanicsStateMachine;
+    class FCharacterMechanics *CharacterMechanics;
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

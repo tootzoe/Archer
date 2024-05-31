@@ -3,8 +3,9 @@
 
 #include "LocomotionStateBase.h"
 
-FLocomotionStateBase::FLocomotionStateBase()
+FLocomotionStateBase::FLocomotionStateBase(FStateMachineBase *StateMachine)
 {
+    this->StateMachine = (FLocomotionStateMachine*)StateMachine;
 }
 
 FLocomotionStateBase::~FLocomotionStateBase()

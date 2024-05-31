@@ -9,9 +9,14 @@
 /**
  * 
  */
-class ARCHER_API FRunState : public FLocomotionStateBase
+class  FRunState : public FLocomotionStateBase
 {
 public:
-    FRunState();
+   explicit FRunState(FStateMachineBase *StateMachin);
     ~FRunState();
+
+
+    virtual void Begin() override;
+    virtual void End() override;
+
 };

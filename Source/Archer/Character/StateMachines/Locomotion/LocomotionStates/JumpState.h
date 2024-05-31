@@ -9,9 +9,14 @@
 /**
  * 
  */
-class ARCHER_API FJumpState : FLocomotionStateBase
+class FJumpState : FLocomotionStateBase
 {
 public:
-    FJumpState();
+    explicit FJumpState(FStateMachineBase *StateMachin);
+
     ~FJumpState();
+
+
+    virtual void Begin() override;
+    virtual void End() override;
 };

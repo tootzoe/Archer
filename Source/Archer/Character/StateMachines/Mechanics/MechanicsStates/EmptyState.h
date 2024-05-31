@@ -9,9 +9,16 @@
 /**
  * 
  */
-class ARCHER_API FEmptyState : public FMechanicStateBase
+class   FEmptyState : public FMechanicStateBase
 {
 public:
-    FEmptyState();
-    ~FEmptyState();
+    FEmptyState(FStateMachineBase *MechanicStateMachine) :
+        FMechanicStateBase(MechanicStateMachine)
+    {}
+
+
+    virtual void Begin() override;
+    virtual void End() override;
+    virtual void Tick(float DeltaTime) override;
+
 };

@@ -7,9 +7,12 @@
 /**
  * 
  */
-class ARCHER_API FStateBase
+class  FStateBase
 {
 public:
     FStateBase();
     ~FStateBase();
+
+    virtual void Begin() = 0;
+    virtual void End() = 0;
 };

@@ -4,8 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+
+#include "CharacterAnimationSlots.h"
+#include "CharacterAnimationStates.h"
+
+
+
+
+
 #include "CharacterAnimations.generated.h"
 
+
+class UCharacterAnimInstance;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ARCHER_API UCharacterAnimations : public UActorComponent
@@ -16,13 +26,20 @@ public:
 	// Sets default values for this component's properties
 	UCharacterAnimations();
 
+    virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+    void Initialie(UCharacterAnimInstance *AnimInstance);
+    void SetLocomotionState(ECharacterLocomotionState State) const;
+    void SetAttactState(ECharacterAttactState State) const;
+    void SetOrientationType(EOrientationType OrientaionType);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+private:
+    UPROPERTY()
+    UCharacterAnimInstance *AnimaInstance;
 
 		
 };

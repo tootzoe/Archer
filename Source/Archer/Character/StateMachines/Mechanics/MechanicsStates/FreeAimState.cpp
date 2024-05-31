@@ -3,10 +3,25 @@
 
 #include "FreeAimState.h"
 
-FFreeAimState::FFreeAimState()
+
+
+void FFreeAimState::Begin()
 {
+    FMechanicStateBase::Begin();
+
 }
 
-FFreeAimState::~FFreeAimState()
+void FFreeAimState::End()
 {
+
+}
+
+void FFreeAimState::Tick(float DeltaTime)
+{
+
+}
+
+void FFreeAimState::DrawArrowAndStartPrecisionCount()
+{
+
 }

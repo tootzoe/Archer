@@ -6,12 +6,17 @@
 
 #include "../../StateBase.h"
 
+class FLocomotionStateMachine;
+class  FStateMachineBase;
 /**
  * 
  */
-class ARCHER_API FLocomotionStateBase : FStateBase
+class  FLocomotionStateBase : FStateBase
 {
 public:
-    FLocomotionStateBase();
+   explicit FLocomotionStateBase(  FStateMachineBase* StateMachine);
     ~FLocomotionStateBase();
+
+protected:
+     FLocomotionStateMachine *StateMachine;
 };

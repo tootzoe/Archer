@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "WaveSystem.h"
+
 
 #include "Kismet/GameplayStatics.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
@@ -8,7 +10,7 @@
 
 
 
-#include "WaveSystem.h"
+
 
 // Sets default values
 AWaveSystem::AWaveSystem()

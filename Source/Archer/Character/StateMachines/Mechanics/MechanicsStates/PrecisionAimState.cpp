@@ -1,15 +1,43 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "Engine.h"
+
+
 #include "PrecisionAimState.h"
 
 
 
 
-FPrecisionAimState::FPrecisionAimState()
+
+
+void FPrecisionAimState::Begin()
 {
+    FMechanicStateBase::Begin();
+
 }
 
-FPrecisionAimState::~FPrecisionAimState()
+void FPrecisionAimState::End()
 {
+
+}
+
+void FPrecisionAimState::Tick(float DeltaTime)
+{
+
+}
+
+void FPrecisionAimState::SetPrecisionXOffset(float val)
+{
+
+}
+
+void FPrecisionAimState::SetPrecisionYOffset(float val)
+{
+
+}
+
+void FPrecisionAimState::ReleaseAndSetAutoAimState() const
+{
+
 }
