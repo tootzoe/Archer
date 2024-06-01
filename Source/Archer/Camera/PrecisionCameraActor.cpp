@@ -17,7 +17,7 @@ void APrecisionCameraActor::BeginPlay()
       UGameplayStatics::GetPlayerCameraManager(GetWorld() , 0)
     );
 
-  //  CameraManager->AddPrecisionCameraReference(this);
+     CameraManager->AddPrecisionCameraReference(this);
 
 }
 

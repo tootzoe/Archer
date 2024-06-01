@@ -28,7 +28,7 @@ public:
 
     virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-    void Initialie(UCharacterAnimInstance *AnimInstance);
+    void Initialize(UCharacterAnimInstance *AnimInstance);
     void SetLocomotionState(ECharacterLocomotionState State) const;
     void SetAttactState(ECharacterAttactState State) const;
     void SetOrientationType(EOrientationType OrientaionType);

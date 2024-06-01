@@ -49,7 +49,7 @@ void UCharacterAnimInstance::SetOrientationType(EOrientationType otype)
 {
     OrientationType = otype;
     if(otype == EOrientationType::Movement){
-        Character->GetCharacterMovement->bOrientRotationToMovement = true;
+   //     Character->GetCharacterMovement->bOrientRotationToMovement = true;
 
         MovementOffsetYaw = LastMovementOffsetYaw = 0;
         CurrentCharacterYaw = LastCharacterYaw = 0;

@@ -78,7 +78,11 @@ void AArcherPlayerController::InitInputSystem()
 
 void AArcherPlayerController::OnSlowModePressed()
 {
-   // if(CurrentGameMode->getCu)
+     if(CurrentGameMode->GetCurrentGameplayMode() != AArcherGameMode::Orbital){
+         SetOrbitalMode();
+     }else{
+         SetNormalMode();
+     }
 
 }
 
@@ -114,7 +118,7 @@ void AArcherPlayerController::SetNormalMode()
     CameraManager->SetNormalCameraView();
 }
 
-void AArcherPlayerController::SetObitalMode()
+void AArcherPlayerController::SetOrbitalMode()
 {
     CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Orbital);
 

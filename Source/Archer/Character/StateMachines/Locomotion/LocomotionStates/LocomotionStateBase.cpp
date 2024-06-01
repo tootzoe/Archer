@@ -8,6 +8,6 @@ FLocomotionStateBase::FLocomotionStateBase(FStateMachineBase *StateMachine)
     this->StateMachine = (FLocomotionStateMachine*)StateMachine;
 }
 
-FLocomotionStateBase::~FLocomotionStateBase()
-{
-}
+// FLocomotionStateBase::~FLocomotionStateBase()
+// {
+// }

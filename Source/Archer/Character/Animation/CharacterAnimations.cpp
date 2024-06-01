@@ -34,7 +34,7 @@ void UCharacterAnimations::TickComponent(float DeltaTime, ELevelTick TickType, F
     // ...
 }
 
-void UCharacterAnimations::Initialie(UCharacterAnimInstance *AnimInstance)
+void UCharacterAnimations::Initialize(UCharacterAnimInstance *AnimInstance)
 {
     AnimaInstance = AnimInstance;
 }

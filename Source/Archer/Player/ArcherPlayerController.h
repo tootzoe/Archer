@@ -61,7 +61,7 @@ public:
     void OnPausePressed();
     void SetPrecisionMode();
     void SetNormalMode();
-    void SetObitalMode();
+    void SetOrbitalMode();
 
 
     };

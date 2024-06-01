@@ -71,8 +71,8 @@ private:
     AArcherPlayerController *PlayerController;
 
 
-    void MoveForward(float val);
-    void MoveRight(float val);
+    void MoveForward(const float val);
+    void MoveRight( const float val);
     void StartRunning();
     void StopRunning();
     void Aim();

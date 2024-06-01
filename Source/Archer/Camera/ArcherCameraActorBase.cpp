@@ -35,6 +35,8 @@ void AArcherCameraActorBase::BeginPlay()
 
     GetWorld()->bIsCameraMoveableWhenPaused = true;
 
+    SetupPlayerInputComponent();
+
 }
 
 void AArcherCameraActorBase::SetupPlayerInputComponent()

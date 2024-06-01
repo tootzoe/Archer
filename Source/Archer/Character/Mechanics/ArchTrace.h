@@ -82,7 +82,7 @@ private:
     FVector AimDirection;
     FVector TargetAimDirection;
     float TargetAimDistance;
-    USkeletalMeshComponent const* BowSocket;
+    class USkeletalMeshSocket const* BowSocket;
     TArray<AEnemy *> AutoAimTargets;
      class AArcherPlayerController* PlayerController;
      FVector2D FreeAimGamepadCursor;

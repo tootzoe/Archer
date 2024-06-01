@@ -32,7 +32,7 @@ public:
     virtual void BeginPlay() override;
 
     FORCEINLINE void AddOrbitalCameraReference(AOrbitalCameraActor *c){OrbitalCamera = c;}
-    FORCEINLINE void AddPrecisionCameraReference(AOrbitalCameraActor *c){PrecisionCamera = c;}
+    FORCEINLINE void AddPrecisionCameraReference(AArcherCameraActorBase *c){PrecisionCamera = c;}
 
     void Initialize(class USlowTimeManager* TimeManager);
     void SetCurrentCamera(AArcherCameraActorBase *Camera);

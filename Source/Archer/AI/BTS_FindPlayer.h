@@ -13,5 +13,14 @@ UCLASS()
 class ARCHER_API UBTS_FindPlayer : public UBTService
 {
 	GENERATED_BODY()
-	
+    UBTS_FindPlayer();
+
+
+
+
+
+
+    // UBTAuxiliaryNode interface
+    protected:
+    virtual void TickNode(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMemory, float DeltaSeconds) override;
 };

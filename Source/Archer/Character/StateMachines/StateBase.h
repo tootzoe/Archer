@@ -10,8 +10,8 @@
 class  FStateBase
 {
 public:
-    FStateBase();
-    ~FStateBase();
+   // FStateBase();
+    virtual ~FStateBase(){;}
 
     virtual void Begin() = 0;
     virtual void End() = 0;

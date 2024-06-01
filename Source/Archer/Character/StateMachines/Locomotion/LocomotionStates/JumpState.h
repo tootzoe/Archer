@@ -9,7 +9,7 @@
 /**
  * 
  */
-class FJumpState : FLocomotionStateBase
+class FJumpState : public FLocomotionStateBase
 {
 public:
     explicit FJumpState(FStateMachineBase *StateMachin);

@@ -1,6 +1,6 @@
 
 
-
+QT -= core gui
 
 
 UE_ROOT = D:/UE5/UE_5.4

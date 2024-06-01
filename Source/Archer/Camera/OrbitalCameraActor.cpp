@@ -33,16 +33,20 @@ void AOrbitalCameraActor::SetPivotPoint(USceneComponent *PivotPoint)
 void AOrbitalCameraActor::BeginPlay()
 {
     Super::BeginPlay();
-    AArcherPlayerCameraManager* CameraManager = Cast<AArcherPlayerCameraManager>(
-    UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0) );
 
-    CameraManager->AddOrbitalCameraReference(this);
-    CameraManager->SetViewTarget(this);
-    CameraManager->SetCurrentCamera(this);
 
-    Camera->SetRelativeLocation(FVector(-Zoom , 0.f , Zoom));
-    LookAtRoot();
-    RotateCameraLeftRight(45.f);
+
+
+    // AArcherPlayerCameraManager* CameraManager = Cast<AArcherPlayerCameraManager>(
+    // UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0) );
+
+    // CameraManager->AddOrbitalCameraReference(this);
+    //  CameraManager->SetViewTarget(this);
+    // CameraManager->SetCurrentCamera(this);
+
+    // Camera->SetRelativeLocation(FVector(-Zoom , 0.f , Zoom));
+    // LookAtRoot();
+    // RotateCameraLeftRight(45.f);
 
 
 

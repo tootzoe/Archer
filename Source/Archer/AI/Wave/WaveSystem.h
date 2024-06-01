@@ -2,9 +2,16 @@
 
 #pragma once
 
+
+#include "../../Enemies/Enemy.h"
+
+
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "WaveSystem.generated.h"
+
+
+
 
 UCLASS()
 class ARCHER_API AWaveSystem : public AActor
@@ -26,8 +33,8 @@ protected:
 
     void StartNextWave();
 
-  //  UPROPERTY(EditDefaultsOnly)
-  //  TSubclassOf<AEnemy> EnemyClass;
+   UPROPERTY(EditDefaultsOnly)
+   TSubclassOf<AEnemy> EnemyClass;
 
 
 

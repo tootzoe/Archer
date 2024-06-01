@@ -25,6 +25,11 @@ void AWaveSystem::BeginPlay()
 {
 	Super::BeginPlay();
 
+    // EnableInput(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+
+    // InputComponent->BindAction("NextWave", IE_Pressed, this, &AWaveSystem::StartNextWave);
+
+
 }
 
 void AWaveSystem::StartNextWave()
@@ -32,8 +37,10 @@ void AWaveSystem::StartNextWave()
     UWorld *World = GetWorld();
     const FActorSpawnParameters SpawnParams;
 
-    for(AActor *loc : SpawnLocations){
-      //  World->SpawnActor(Enym)
+    for(AActor *a : SpawnLocations){
+         World->SpawnActor<AEnemy>(EnemyClass , a->GetActorLocation() , a->GetActorRotation() , SpawnParams);
+        // UAIBlueprintHelperLibrary::SpawnAIFromClass(GetWorld(), EnemyClass , nullptr , a->GetActorLocation(),
+        //                                             a->GetActorRotation());
     }
 
 
@@ -48,6 +55,20 @@ void AWaveSystem::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

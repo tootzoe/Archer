@@ -11,11 +11,11 @@ class  FStateMachineBase;
 /**
  * 
  */
-class  FLocomotionStateBase : FStateBase
+class  FLocomotionStateBase : public FStateBase
 {
 public:
    explicit FLocomotionStateBase(  FStateMachineBase* StateMachine);
-    ~FLocomotionStateBase();
+   // ~FLocomotionStateBase();
 
 protected:
      FLocomotionStateMachine *StateMachine;

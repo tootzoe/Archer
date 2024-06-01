@@ -3,10 +3,4 @@
 
 #include "StateBase.h"
 
-FStateBase::FStateBase()
-{
-}
 
-FStateBase::~FStateBase()
-{
-}

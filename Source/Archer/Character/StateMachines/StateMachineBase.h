@@ -37,7 +37,7 @@ public:
 protected:
 
     AArcherCharacter *ArcherCharacter;
-    template<class T>
+    template <class T>
     void SetState(){
         State->End();
         delete State;
