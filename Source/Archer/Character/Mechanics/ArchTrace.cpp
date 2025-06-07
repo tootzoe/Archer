@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "ArchTrace.h"
 
 #include "DrawDebugHelpers.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -14,7 +15,7 @@
 
 #include "../../Utilities/Debug.h"
 
-#include "ArchTrace.h"
+
 
 // Sets default values for this component's properties
 UArchTrace::UArchTrace()

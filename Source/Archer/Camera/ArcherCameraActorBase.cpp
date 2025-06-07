@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "ArcherCameraActorBase.h"
 
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -8,7 +8,7 @@
 
 
 
-#include "ArcherCameraActorBase.h"
+
 
 // Sets default values
 AArcherCameraActorBase::AArcherCameraActorBase()

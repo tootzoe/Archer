@@ -26,7 +26,7 @@
 
 
 
-PRAGMA_DISABLE_OPTIMIZATION
+UE_DISABLE_OPTIMIZATION
 
 
 AArcherCharacter::AArcherCharacter()
@@ -191,4 +191,4 @@ void AArcherCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputCom
 }
 
 
-PRAGMA_ENABLE_OPTIMIZATION
+UE_ENABLE_OPTIMIZATION

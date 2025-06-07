@@ -1,5 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "DashState.h"
+
+
 #include "../../../Animation/CharacterAnimations.h"
 #include "../../../Animation/CharacterAnimationStates.h"
 #include "../../../Movement/CharacterMovement.h"
@@ -7,7 +10,7 @@
 #include "../../../StateMachines/Mechanics/MechanicsStateMachine.h"
 
 
-#include "DashState.h"
+
 
 
 FDashState::FDashState(FStateMachineBase *StateMachin)

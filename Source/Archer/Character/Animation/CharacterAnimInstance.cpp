@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "CharacterAnimInstance.h"
 
 #include "Engine/SkeletalMeshSocket.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -17,7 +17,7 @@
 
 #include "../../Utilities/Debug.h"
 
-#include "CharacterAnimInstance.h"
+
 
 
 

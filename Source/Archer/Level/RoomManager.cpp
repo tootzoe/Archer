@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "RoomManager.h"
 
 #include "Components/BoxComponent.h"
 
-#include "RoomManager.h"
 
 // Sets default values
 ARoomManager::ARoomManager()

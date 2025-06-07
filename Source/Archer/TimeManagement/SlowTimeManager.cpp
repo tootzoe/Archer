@@ -1,13 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "SlowTimeManager.h"
 
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
 
 
-
-#include "SlowTimeManager.h"
 
 
 void USlowTimeManager::AddFreeTicker(AActor *Ticker)

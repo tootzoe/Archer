@@ -1,9 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "InteractiveElement.h"
+
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 
-#include "InteractiveElement.h"
+
 
 // Sets default values
 AInteractiveElement::AInteractiveElement()

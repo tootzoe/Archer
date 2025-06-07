@@ -1,18 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "Projectile.h"
 
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 
-
-
-
-
-
-
-#include "Projectile.h"
 
 // Sets default values
 AProjectile::AProjectile()

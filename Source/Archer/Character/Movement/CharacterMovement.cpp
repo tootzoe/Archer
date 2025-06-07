@@ -1,6 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+
+#include "CharacterMovement.h"
+
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -12,7 +15,6 @@
 
 
 
-#include "CharacterMovement.h"
 
 FCharacterMovement::FCharacterMovement(UCharacterMovementComponent *m)
 {

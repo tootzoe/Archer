@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "JumpState.h"
 
 #include "../../../Animation/CharacterAnimations.h"
 #include "../../../Animation/CharacterAnimationStates.h"
@@ -10,7 +10,7 @@
 
 
 
-#include "JumpState.h"
+
 
 
 

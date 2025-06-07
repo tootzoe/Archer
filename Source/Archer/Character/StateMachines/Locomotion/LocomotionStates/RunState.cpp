@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "RunState.h"
 
 #include "../../../Animation/CharacterAnimations.h"
 #include "../../../Animation/CharacterAnimationStates.h"
@@ -9,7 +10,7 @@
 
 
 
-#include "RunState.h"
+
 
 
 FRunState::FRunState(FStateMachineBase *StateMachin)

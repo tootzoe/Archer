@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "ArcherPlayerCameraManager.h"
 
 #include "../TimeManagement/SlowTimeManager.h"
 #include "ArcherCameraActorBase.h"
@@ -10,7 +10,7 @@
 
 
 
-#include "ArcherPlayerCameraManager.h"
+
 
 
 AArcherPlayerCameraManager::AArcherPlayerCameraManager()

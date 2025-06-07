@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "MechanicsStateMachine.h"
 
 #include "MechanicsStates/AimReadyState.h"
 #include "MechanicsStates/AutoAimState.h"
@@ -9,7 +9,7 @@
 #include "MechanicsStates/PrecisionAimState.h"
 
 
-#include "MechanicsStateMachine.h"
+
 
 
 

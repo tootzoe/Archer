@@ -1,48 +1,48 @@
 
 
-QT -= core gui
-
-
-UE_ROOT = D:/UE5/UE_5.4
-
-INCLUDEPATH += $$UE_ROOT/Engine/Source \
-                           $$UE_ROOT/Engine/Intermediate/Build/Win64/UE4Editor/Inc \
-                           $$UE_ROOT/Engine/Intermediate/Build/Win64/UE4Editor/Inc/Engine/UHT \
-                           $$UE_ROOT/Engine/Source/Runtime \
-                           $$UE_ROOT/Engine/Source/Runtime/Engine/Classes \
-                           $$UE_ROOT/Engine/Source/Runtime/Engine/FTimerManager \
-                           $$UE_ROOT/Engine/Source/Runtime/Engine/Public \
-                           $$UE_ROOT/Engine/Source/Runtime/TraceLog/Public \
-                           $$UE_ROOT/Engine/Source/Runtime/Core/Public \
-                           $$UE_ROOT/Engine/Source/Runtime/CoreUObject/Public \
-                           $$UE_ROOT/Engine/Source/Runtime/UMG/Public \
-                           $$UE_ROOT/Engine/Source/Runtime/Experimental/Chaos/Public \
-                           $$UE_ROOT/Engine/Source/Runtime/AIModule/Classes \
-                           $$UE_ROOT/Engine/Plugins/EnhancedInput/Source/EnhancedInput/Public
-
-######  Project reletived
-INCLUDEPATH += ./../Intermediate/Build/Win64/UnrealEditor/Inc/Archer/UHT
-
-INCLUDEPATH += ./Archer
 
 
 
+#TEMPLATE = app
+CONFIG += console
+CONFIG -= app_bundle
+CONFIG -= qt
 
-DEFINES += "USE_QTCREATOR"
-DEFINES += "ARCHER_API=  "
+#
+# below one line project name need to be lowercaes
+PRJNAMETOOT = Archer
+DEFINES += "ARCHER_API="
+DEFINES += "ARCHER_API(...)="
+#
+DEFINES += "UCLASS()=ARCHER_API"
+DEFINES += "UCLASS(...)=ARCHER_API"
+#
+# this is true during development with unreal-editor...
 
-DEFINES += "BlueprintCallable" "Blueprintable"  \
-           "BlueprintImplementableEvent" \
-           "BlueprintNativeEvent" \
-           "_Implementation" "VisibleAnywhere" \
-            "EditAnywhere" "BlueprintReadWrite" \
-            "Category" "BlueprintReadOnly" \
-            "Transient" "VisibleDefaultsOnly" \
-            "EditDefaultsOnly" "EditInstanceOnly" \
-            "AllowPrivateAccess"
+DEFINES += "WITH_EDITORONLY_DATA=1"
+
+## this project only
+DEFINES += PLATFORM_ANDROID
+##
 
 
-#####
+INCLUDEPATH += ../Intermediate/Build/Win64/UnrealEditor/Inc/$$PRJNAMETOOT/UHT
+INCLUDEPATH += $$PRJNAMETOOT $$PRJNAMETOOT/Public $$PRJNAMETOOT/Private
+#INCLUDEPATH += ../Plugins/NNEPostProcessing/Source/NNEPostProcessing/Public
+# we should follow UE project struct to include files, start from prj.Build.cs folder
+#
+#  The Thirdparty libs
+#
+#
+#
+include(defs.pri)
+include(inc.pri)
+#
+## this project only
+# INCLUDEPATH += $$UESRCROOT/Runtime/Renderer/Private
+##
+#
+#
 
 DISTFILES += \
     Archer.Target.cs \
@@ -141,12 +141,3 @@ SOURCES += \
     Archer/Player/ArcherPlayerController.cpp \
     Archer/TimeManagement/SlowTimeManager.cpp \
     Archer/Weapons/Projectile.cpp
-
-
-
-
-
-
-
-
-

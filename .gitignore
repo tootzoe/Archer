@@ -1,6 +1,11 @@
 # Visual Studio 2015 user specific files
 .vs/
 
+tootbd/
+Content/TmpTest/
+
+*.pro.user
+
 # Compiled Object files
 *.slo
 *.lo
@@ -47,7 +52,7 @@ SourceArt/**/*.tga
 
 # Binary Files
 Binaries/*
-Plugins/*/Binaries/*
+Plugins/**/Binaries/*
 
 # Builds
 Build/*
@@ -68,10 +73,7 @@ Saved/*
 
 # Compiled source files for the engine to use
 Intermediate/*
-Plugins/*/Intermediate/*
+Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
-
-# Large assets
-Content/ParagonSparrow

@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "CharacterMechanics.h"
 
 #include "Kismet/GameplayStatics.h"
 
@@ -11,7 +11,7 @@
 #include "../../Enemies/Enemy.h"
 
 
-#include "CharacterMechanics.h"
+
 
 FCharacterMechanics::FCharacterMechanics(UArchTrace *ArchTrace, UCharacterAnimations *CharacterAnimations)
 {
