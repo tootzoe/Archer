@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
@@ -6,36 +6,35 @@
 #include "GameFramework/GameModeBase.h"
 #include "ArcherGameMode.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class ARCHER_API AArcherGameMode : public AGameModeBase
+UCLASS(minimalapi)
+class AArcherGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-    AArcherGameMode();
+	AArcherGameMode();
+
 public:
+	enum GameplayMode
+	{
+		Normal,
+		Orbital,
+		Precision,
+		Menu
+	};
+	
+	GameplayMode CurrentGameplayMode;
 
-enum GameplayMode {
-    Normal,
-    Orbital,
-    Precision,
-    Menu
-};
-    GameplayMode CurrentGameplayMode;
-
-    FORCEINLINE GameplayMode GetCurrentGameplayMode() const {return CurrentGameplayMode;}
-    FORCEINLINE void SetCurrentGameplayMode(GameplayMode m)  {  CurrentGameplayMode = m;}
+	FORCEINLINE GameplayMode GetCurrentGameplayMode() const {return CurrentGameplayMode;}
+	FORCEINLINE void SetCurrentGameplayMode(GameplayMode GameplayMode) {CurrentGameplayMode = GameplayMode;}
 
 protected:
-    void BeforeStartPlay();
-    virtual void StartPlay() override;
-    void AfterStartPlay();
-
+	void BeforeStartPlay();
+	virtual void StartPlay() override;
+	void AfterStartPlay();
 
 private:
-    UPROPERTY()
-    class AArcherPlayerController* PlayerController;
-	
+	UPROPERTY()
+	class AArcherPlayerController* PlayerController;
+};
 
-    };
+
+

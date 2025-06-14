@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
@@ -10,27 +10,19 @@ UCLASS()
 class ARCHER_API ARoomManager : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
+
+public:
 	ARoomManager();
 
-    virtual void Tick(float DeltaTime) override;
-
 protected:
-	// Called when the game starts or when spawned
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USceneComponent* Root;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	USceneComponent* CameraPivot;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UBoxComponent* PlayerCollision;
+	
 	virtual void BeginPlay() override;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-    USceneComponent *Root;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-    USceneComponent *CameraPivot;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-    class UBoxComponent *PlayerCollision;
-
-
-
-
 };

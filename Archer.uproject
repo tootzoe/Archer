@@ -10,17 +10,16 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine",
-				"CoreUObject",
 				"AIModule"
 			]
 		}
 	],
 	"Plugins": [
 		{
-			"Name": "ModelingToolsEditorMode",
+			"Name": "WinDualShock",
 			"Enabled": true,
-			"TargetAllowList": [
-				"Editor"
+			"SupportedTargetPlatforms": [
+				"Win64"
 			]
 		},
 		{

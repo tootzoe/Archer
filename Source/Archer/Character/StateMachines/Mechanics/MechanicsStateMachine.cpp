@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "MechanicsStateMachine.h"
 
@@ -8,55 +8,43 @@
 #include "MechanicsStates/FreeAimState.h"
 #include "MechanicsStates/PrecisionAimState.h"
 
-
-
-
-
-
-FMechanicsStateMachine::FMechanicsStateMachine(AArcherCharacter *ArcherCharacter)
-    : FStateMachineBase(ArcherCharacter)
+FMechanicsStateMachine::FMechanicsStateMachine(AArcherCharacter* ArcherCharacter) : FStateMachineBase(ArcherCharacter)
 {
-    State = new FAimReadyState(this);
-    FMechanicsStateMachine::SetSpecificState();
-}
-
-FMechanicsStateMachine::~FMechanicsStateMachine()
-{
-
+	State = new FAimReadyState(this);
+	FMechanicsStateMachine::SetSpecificState();
 }
 
 void FMechanicsStateMachine::Tick(float DeltaTime)
 {
-     MechanicState->Tick(DeltaTime);
+	MechanicState->Tick(DeltaTime);
 }
 
 void FMechanicsStateMachine::SetEmptyState()
 {
-    SetState<FEmptyState>();
+	SetState<FEmptyState>();
 }
 
 void FMechanicsStateMachine::SetAimReadyState()
 {
-    SetState<FAimReadyState>();
+	SetState<FAimReadyState>();
 }
 
 void FMechanicsStateMachine::SetFreeAimState()
 {
-    SetState<FFreeAimState>();
+	SetState<FFreeAimState>();
 }
 
 void FMechanicsStateMachine::SetAutoAimState()
 {
-    SetState<FAutoAimState>();
+	SetState<FAutoAimState>();
 }
 
 void FMechanicsStateMachine::SetPrecisionAimState()
 {
-    SetState<FPrecisionAimState>();
+	SetState<FPrecisionAimState>();
 }
-
 
 void FMechanicsStateMachine::SetSpecificState()
 {
-    MechanicState = static_cast<FMechanicStateBase*>(State);
+	MechanicState = static_cast<FMechanicStateBase*>(State);
 }

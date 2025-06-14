@@ -44,11 +44,6 @@ include(inc.pri)
 #
 #
 
-DISTFILES += \
-    Archer.Target.cs \
-    Archer/Archer.Build.cs \
-    ArcherEditor.Target.cs
-
 HEADERS += \
     Archer/AI/BTS_FindPlayer.h \
     Archer/AI/EnemyAIController.h \
@@ -141,3 +136,8 @@ SOURCES += \
     Archer/Player/ArcherPlayerController.cpp \
     Archer/TimeManagement/SlowTimeManager.cpp \
     Archer/Weapons/Projectile.cpp
+
+DISTFILES += \
+    Archer.Target.cs \
+    Archer/Archer.Build.cs \
+    ArcherEditor.Target.cs

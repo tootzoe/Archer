@@ -1,41 +1,34 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
-
-#include "../../Enemies/Enemy.h"
-
-
 #include "CoreMinimal.h"
+
+#include "Archer/Enemies/Enemy.h"
+
 #include "GameFramework/Actor.h"
 #include "WaveSystem.generated.h"
 
-
-
-
-UCLASS()
+UCLASS(Blueprintable)
 class ARCHER_API AWaveSystem : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
+
+public:
 	AWaveSystem();
 
-    UPROPERTY(EditAnywhere , BlueprintReadWrite)
-    TArray<AActor*> SpawnLocations;
-
-    virtual void Tick(float DeltaTime) override;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<AActor*> SpawnLocations;
+	
 protected:
-	// Called when the game starts or when spawned
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AEnemy> EnemyClass;
+	
 	virtual void BeginPlay() override;
 
-    void StartNextWave();
+	void StartNextWave();
 
-   UPROPERTY(EditDefaultsOnly)
-   TSubclassOf<AEnemy> EnemyClass;
-
-
-
+public:
+	virtual void Tick(float DeltaTime) override;
 };

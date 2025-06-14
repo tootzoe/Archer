@@ -1,50 +1,24 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "ShieldState.h"
 
-#include "../../../Animation/CharacterAnimations.h"
-#include "../../../Mechanics/CharacterMechanics.h"
-#include "../MechanicsStateMachine.h"
-
-
-
-
-
+#include "Archer/Character/Animation/CharacterAnimations.h"
+#include "Archer/Character/Animation/CharacterAnimationStates.h"
+#include "Archer/Character/Mechanics/CharacterMechanics.h"
+#include "Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.h"
 
 void FShieldState::Begin()
 {
-    FMechanicStateBase::Begin();
+	FMechanicStateBase::Begin();
 
-    MechanicsStateMachine->GetCharacterAnimations()
-            ->SetOrientationType(EOrientationType::AimDirection);
-
-
+	MechanicsStateMachine->GetCharacterAnimations()->SetOrientationType(EOrientationType::AimDirection);
 }
 
 void FShieldState::End()
 {
-
 }
 
 void FShieldState::Tick(float DeltaTime)
 {
-    CharacterMechanics->InterpolateAimDirection(DeltaTime);
+	CharacterMechanics->InterpolateAimDirection(DeltaTime);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

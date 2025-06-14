@@ -1,70 +1,50 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Camera/PlayerCameraManager.h"
-
 #include "OrbitalCameraActor.h"
-
 #include "ArcherPlayerCameraManager.generated.h"
 
-/**
- * 
- */
-
-
-#ifdef USE_QTCREATOR
-#define UCLASS()
-#define PURE_VIRTUAL
-#endif
-
+class USlowTimeManager;
+class AArcherGameMode;
 class AArcherCameraActorBase;
 
 UCLASS()
 class ARCHER_API AArcherPlayerCameraManager : public APlayerCameraManager
 {
 	GENERATED_BODY()
-
-    explicit AArcherPlayerCameraManager();
+	
+	AArcherPlayerCameraManager();
 
 public:
-    virtual void BeginPlay() override;
+	virtual void BeginPlay() override;
 
-    FORCEINLINE void AddOrbitalCameraReference(AOrbitalCameraActor *c){OrbitalCamera = c;}
-    FORCEINLINE void AddPrecisionCameraReference(AArcherCameraActorBase *c){PrecisionCamera = c;}
+	FORCEINLINE void AddOrbitalCameraReference(AOrbitalCameraActor* Camera) { OrbitalCamera = Camera; }
+	FORCEINLINE void AddPrecisionCameraReference(AArcherCameraActorBase* Camera) { PrecisionCamera = Camera; }
 
-    void Initialize(class USlowTimeManager* TimeManager);
-    void SetCurrentCamera(AArcherCameraActorBase *Camera);
-    void SetPrecisionCameraView();
-    void SetOrbitalCameraView();
-    void SetNormalCameraView();
+	void Initialize(USlowTimeManager* TimeManager);
+	void SetCurrentCamera(AArcherCameraActorBase* Camera);
+	void SetPrecisionCameraView();
+	void SetOrbitalCameraView();
+	void SetNormalCameraView();
 
-    UFUNCTION(BlueprintCallable)
-    void SetOrbitalCameraPivotPoint(USceneComponent *PivotPoint){OrbitalCamera->SetPivotPoint(PivotPoint);}
+	UFUNCTION(BlueprintCallable)
+	void SetOrbitalCameraPivotPoint(USceneComponent* PivotPoint){OrbitalCamera->SetPivotPoint(PivotPoint);}
 
-    void RotateLeft();
-    void RotateRight();
-
-
+	void RotateLeft();
+	void RotateRight();
 
 private:
-    UPROPERTY()
-    class AOrbitalCameraActor* OrbitalCamera;
-
-    UPROPERTY()
-    AArcherCameraActorBase* PrecisionCamera;
-    UPROPERTY()
-    AArcherCameraActorBase* CurrentCamera;
-    UPROPERTY()
-    FViewTargetTransitionParams  TransitionParams;
-
-
-    void EnableCurrentCameraInput();
-    void DisableCurrentCameraInput();
-
-
-
-
+	UPROPERTY()
+	AOrbitalCameraActor* OrbitalCamera;
+	UPROPERTY()
+	AArcherCameraActorBase* PrecisionCamera;
+	UPROPERTY()
+	AArcherCameraActorBase* CurrentCamera;
+	UPROPERTY()
+	FViewTargetTransitionParams TransitionParams;
 	
+	void EnableCurrentCameraInput();
+	void DisableCurrentCameraInput();
 };

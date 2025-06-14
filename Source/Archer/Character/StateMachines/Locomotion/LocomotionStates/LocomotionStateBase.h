@@ -1,22 +1,15 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
-
-#include "CoreMinimal.h"
-
-#include "../../StateBase.h"
+#include "Archer/Character/StateMachines/StateBase.h"
 
 class FLocomotionStateMachine;
-class  FStateMachineBase;
-/**
- * 
- */
-class  FLocomotionStateBase : public FStateBase
+
+class FLocomotionStateBase: public FStateBase
 {
 public:
-   explicit FLocomotionStateBase(  FStateMachineBase* StateMachine);
-   // ~FLocomotionStateBase();
+	explicit FLocomotionStateBase(class FStateMachineBase* StateMachine);
 
 protected:
-     FLocomotionStateMachine *StateMachine;
+	FLocomotionStateMachine* StateMachine;
 };

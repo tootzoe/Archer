@@ -1,43 +1,23 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "MechanicStateBase.h"
 
-#include "../../../Mechanics/CharacterMechanics.h"
-#include "../MechanicsStateMachine.h"
+#include "Archer/Character/Mechanics/CharacterMechanics.h"
+#include "Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.h"
 
-
-
-
-
-FMechanicStateBase::FMechanicStateBase(FStateMachineBase *MechanicsStateMachine) :
-    FStateBase()
+FMechanicStateBase::FMechanicStateBase(FStateMachineBase* MechanicsStateMachine) : FStateBase()
 {
-    this->MechanicsStateMachine = static_cast<FMechanicsStateMachine* >(MechanicsStateMachine);
+	this->MechanicsStateMachine = static_cast<FMechanicsStateMachine*>(MechanicsStateMachine);
 }
 
+/*FMechanicStateBase::~FMechanicStateBase()
+{
+	delete MechanicsStateMachine;
+	delete CharacterMechanics;
+}*/
 
+//TODO -> no podia posar-ho al constructor?
 void FMechanicStateBase::Begin()
 {
-    CharacterMechanics = MechanicsStateMachine->GetCharacterMechanics();
+	CharacterMechanics = MechanicsStateMachine->GetCharacterMechanics();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

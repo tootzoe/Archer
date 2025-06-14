@@ -1,42 +1,35 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "StateMachineBase.h"
 
-#include "../ArcherCharacter.h"
-#include "../../Player/ArcherPlayerController.h"
+#include "Archer/Character/ArcherCharacter.h"
 
-
-
-
-
-
-
-FStateMachineBase::FStateMachineBase(AArcherCharacter *ArcherCharacter)
+FStateMachineBase::FStateMachineBase(AArcherCharacter* ArcherCharacter)
 {
-    this->ArcherCharacter = ArcherCharacter;
+	this->ArcherCharacter = ArcherCharacter;
 }
 
-FCharacterMovement *FStateMachineBase::GetCharacterMovement() const
+FCharacterMovement* FStateMachineBase::GetCharacterMovement() const
 {
-    return ArcherCharacter->GetArcherMovement();
+	return ArcherCharacter->GetArcherMovement();
 }
 
-FCharacterMechanics *FStateMachineBase::GetCharacterMechanics() const
+FCharacterMechanics* FStateMachineBase::GetCharacterMechanics() const
 {
-    return ArcherCharacter->GetCharacterMechanics();
+	return ArcherCharacter->GetCharacterMechanics();
 }
 
-UCharacterAnimations *FStateMachineBase::GetCharacterAnimations() const
+UCharacterAnimations* FStateMachineBase::GetCharacterAnimations() const
 {
-    return ArcherCharacter->GetArcherAnimations();
+	return ArcherCharacter->GetArcherAnimations();
 }
 
-UWorld *FStateMachineBase::GetWorld() const
+UWorld* FStateMachineBase::GetWorld() const
 {
-    return ArcherCharacter->GetWorld();
+	return ArcherCharacter->GetWorld();
 }
 
 bool FStateMachineBase::IsPlayerUsingGamepad() const
 {
-    return ArcherCharacter->GetPlayerController()->IsPlayerUsingGamepad;
+	return ArcherCharacter->GetPlayerController()->IsPlayerUsingGamepad;
 }

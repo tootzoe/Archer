@@ -1,78 +1,83 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "Projectile.h"
 
-#include "Components/SphereComponent.h"
-#include "Components/StaticMeshComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+#include "Archer/Character/CharacterBase.h"
 
 
-// Sets default values
 AProjectile::AProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	
+	if(!CollisionComponent)
+	{
+		CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
+		CollisionComponent->InitSphereRadius(15.0f);
+		RootComponent = CollisionComponent;
+	}
 
-    if(!CollisionComponent){
-        CollisionComponent = CreateDefaultSubobject<USphereComponent>("SphereComponent");
-        CollisionComponent->InitSphereRadius( 15.f);
-        RootComponent = CollisionComponent;
-    }
+	if(!ProjectileMovementComponent)
+	{
+		ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
+		ProjectileMovementComponent->SetUpdatedComponent(CollisionComponent);
+		ProjectileMovementComponent->InitialSpeed = 3000.0f;
+		ProjectileMovementComponent->MaxSpeed = 3000.0f;
+		ProjectileMovementComponent->bRotationFollowsVelocity = true;
+		ProjectileMovementComponent->bShouldBounce = true;
+		ProjectileMovementComponent->Bounciness = 0.3f;
+		ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
+	}
 
-    if(!ProjectileMovementComponent){
-        ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("PorjectileMovementComponent"));
-        ProjectileMovementComponent->SetUpdatedComponent(CollisionComponent);
-        ProjectileMovementComponent->InitialSpeed = 3000.f;
-        ProjectileMovementComponent->MaxSpeed = 3000.f;
-        ProjectileMovementComponent->bRotationFollowsVelocity = true;
-        ProjectileMovementComponent->bShouldBounce = true;
-        ProjectileMovementComponent->Bounciness = 0.3f;
-        ProjectileMovementComponent->ProjectileGravityScale = 0.f;
+	if(!Mesh)
+	{
+		Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMeshComponent"));
+		Mesh->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
+		Mesh->SetupAttachment(RootComponent);
+	}
 
-    }
-
-    if (!Mesh) {
-        Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMeshComponent"));
-        Mesh->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
-        Mesh->SetupAttachment(RootComponent);
-    }
-
-    InitialLifeSpan = 3.0f;
-
-    CollisionComponent->BodyInstance.SetCollisionProfileName(TEXT("Projectile"));
-    CollisionComponent->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
-
-
+	InitialLifeSpan = 3.0f;
+	
+	CollisionComponent->BodyInstance.SetCollisionProfileName(TEXT("Projectile"));
+	CollisionComponent->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
 
-// Called when the game starts or when spawned
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
-void AProjectile::OnHit(UPrimitiveComponent *HitComponent, AActor *OtherActor, UPrimitiveComponent *OtherComponent, FVector NormalImpulse, const FHitResult &Hit)
+void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
+	FVector NormalImpulse, const FHitResult& Hit)
 {
+	ACharacterBase* CharacterBase = Cast<ACharacterBase>(OtherActor);
+	
+	if (CharacterBase)
+	{
+		if(CharacterBase->ActorHasTag("Player"))
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, TEXT("PLAYER!"));
+			return;
+		}
 
-
-
-
-    if(Cast<AProjectile>(OtherActor)) return;
-
-    Destroy();
-
+		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, TEXT("HIT"));
+		CharacterBase->Hit();
+	}
+	
+	if(Cast<AProjectile>(OtherActor))//two projectiles hit
+	{
+		return;
+	}
+	
+	Destroy();
 }
 
-// Called every frame
 void AProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
-void AProjectile::FireInDirection(const FVector &ShootDirection)
+void AProjectile::FireInDirection(const FVector& ShootDirection)
 {
-    ProjectileMovementComponent->Velocity = ShootDirection * ProjectileMovementComponent->InitialSpeed;
+	ProjectileMovementComponent->Velocity = ShootDirection * ProjectileMovementComponent->InitialSpeed;
 }
 

@@ -102,6 +102,7 @@ INCLUDEPATH += $$UESRCROOT/Runtime/GameMenuBuilder/Public
 INCLUDEPATH += $$UESRCROOT/Runtime/GameplayDebugger/Public
 INCLUDEPATH += $$UESRCROOT/Runtime/GameplayMediaEncoder/Public
 INCLUDEPATH += $$UESRCROOT/Runtime/GameplayTags/Public
+INCLUDEPATH += $$UESRCROOT/Runtime/GameplayTags/Classes
 INCLUDEPATH += $$UESRCROOT/Runtime/GameplayTasks/Public
 INCLUDEPATH += $$UESRCROOT/Runtime/GeometryCore/Public
 INCLUDEPATH += $$UESRCROOT/Runtime/GeometryFramework/Public

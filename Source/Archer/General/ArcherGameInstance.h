@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
@@ -6,9 +6,7 @@
 #include "Engine/GameInstance.h"
 #include "ArcherGameInstance.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class ARCHER_API UArcherGameInstance : public UGameInstance
 {

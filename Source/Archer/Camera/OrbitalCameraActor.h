@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
@@ -6,43 +6,29 @@
 #include "ArcherCameraActorBase.h"
 #include "OrbitalCameraActor.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class ARCHER_API AOrbitalCameraActor : public AArcherCameraActorBase
 {
 	GENERATED_BODY()
 
-  public:
+	AOrbitalCameraActor();
 
-    explicit AOrbitalCameraActor();
-
-    void SetPivotPoint(USceneComponent *PivotPoint);
-
-
-    virtual void RotateCameraLeftRight(float) override;
+public:
+	void SetPivotPoint(USceneComponent* PivotPoint);
+	virtual void RotateCameraLeftRight(float Value) override;
 
 protected:
+	UPROPERTY(EditDefaultsOnly)
+	float RotationSpeed = 1.f;
 
-    virtual void BeginPlay() override;
-    virtual void RotateCameraUpDown(float) override;
-
-    virtual void SetupPlayerInputComponent() override;
-    void CorrectRollRotation();
-
-
-  UPROPERTY(EditDefaultsOnly)
-  float RotationSpeed = 1.f;
-  UPROPERTY(EditAnywhere, BlueprintReadWrite)
-  float Zoom = 1000.f;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Zoom = 1000.f;
+	
+	virtual void BeginPlay() override;
+	virtual void RotateCameraUpDown(float Value) override;
+	virtual void SetupPlayerInputComponent() override;
+	void CorrectRollRotation();
 
 private:
-   void LookAtRoot();
-
-	
-
-   };
-
-
+	void LookAtRoot();
+};

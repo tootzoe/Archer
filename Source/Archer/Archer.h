@@ -1,6 +1,5 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
 #include "CoreMinimal.h"
-

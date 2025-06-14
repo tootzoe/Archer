@@ -1,58 +1,49 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "AimReadyState.h"
 
-#include "Engine.h"
-
-#include "../../../Animation/CharacterAnimations.h"
-#include "../../../Mechanics/CharacterMechanics.h"
-#include "../MechanicsStateMachine.h"
-
-
-
-
-
-
+#include "Archer/Character/Animation/CharacterAnimations.h"
+#include "Archer/Character/StateMachines/Mechanics/MechanicsStateMachine.h"
 
 void FAimReadyState::Begin()
 {
-    MechanicsStateMachine->StartAimingDelegate.AddRaw(this, &FAimReadyState::SetAimState);
-    MechanicsStateMachine->StartFreeAimDelegate.AddRaw(this, &FAimReadyState::SetFreeAimExpected);
-    MechanicsStateMachine->StopFreeAimDelegate.AddRaw(this, &FAimReadyState::SetFreeAimNotExpected);
+	MechanicsStateMachine->StartAimingDelegate.AddRaw(this, &FAimReadyState::SetAimState);
+	MechanicsStateMachine->StartFreeAimDelegate.AddRaw(this, &FAimReadyState::SetFreeAimExpected);
+	MechanicsStateMachine->StopFreeAimDelegate.AddRaw(this, &FAimReadyState::SetFreeAimNotExpected);
 
-    MechanicsStateMachine->GetCharacterAnimations()->SetOrientationType(EOrientationType::Movement);
+	MechanicsStateMachine->GetCharacterAnimations()->SetOrientationType(EOrientationType::Movement);
 }
 
 void FAimReadyState::End()
 {
-    MechanicsStateMachine->StartAimingDelegate.Clear();
-    MechanicsStateMachine->StartFreeAimDelegate.Clear();
-    MechanicsStateMachine->StopFreeAimDelegate.Clear();
-
+	MechanicsStateMachine->StartAimingDelegate.Clear();
+	MechanicsStateMachine->StartFreeAimDelegate.Clear();
+	MechanicsStateMachine->StopFreeAimDelegate.Clear();
 }
 
 void FAimReadyState::Tick(float DeltaTime)
 {
-    GEngine->AddOnScreenDebugMessage(0 , -1 , FColor::Green , "AimReadyState....");
+	GEngine->AddOnScreenDebugMessage(0, -1, FColor::Green, "AimReadyState");
 }
 
 void FAimReadyState::SetAimState() const
 {
-    if(IsFreeAimExpected){
-        MechanicsStateMachine->SetFreeAimState();
-    }else
-        MechanicsStateMachine->SetAutoAimState();
-
+	if (IsFreeAimExpected)
+	{
+		MechanicsStateMachine->SetFreeAimState();
+	}
+	else
+	{
+		MechanicsStateMachine->SetAutoAimState();
+	}
 }
 
 void FAimReadyState::SetFreeAimExpected()
 {
-    IsFreeAimExpected = true;
+	IsFreeAimExpected = true;
 }
 
 void FAimReadyState::SetFreeAimNotExpected()
 {
-    IsFreeAimExpected = false;
+	IsFreeAimExpected = false;
 }

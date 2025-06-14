@@ -1,34 +1,23 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "PrecisionCameraActor.h"
-
-
-#include "Kismet/GameplayStatics.h"
-
 #include "ArcherPlayerCameraManager.h"
-
-
-
+#include "Kismet/GameplayStatics.h"
 
 
 void APrecisionCameraActor::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
 
-    AArcherPlayerCameraManager *CameraManager = Cast<AArcherPlayerCameraManager>(
-      UGameplayStatics::GetPlayerCameraManager(GetWorld() , 0)
-    );
-
-     CameraManager->AddPrecisionCameraReference(this);
-
+	AArcherPlayerCameraManager* CameraManager = Cast<AArcherPlayerCameraManager>(
+		UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0));
+	CameraManager->AddPrecisionCameraReference(this);
 }
 
-void APrecisionCameraActor::RotateCameraLeftRight(float)
+void APrecisionCameraActor::RotateCameraLeftRight(float Value)
 {
-
 }
 
-void APrecisionCameraActor::RotateCameraUpDown(float)
+void APrecisionCameraActor::RotateCameraUpDown(float Value)
 {
-
 }

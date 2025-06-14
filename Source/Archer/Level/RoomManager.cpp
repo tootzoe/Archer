@@ -1,35 +1,20 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "RoomManager.h"
 
 #include "Components/BoxComponent.h"
 
-
-// Sets default values
 ARoomManager::ARoomManager()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-    Root = CreateDefaultSubobject<USceneComponent>("Root");
-    RootComponent = Root;
-
-    CameraPivot = CreateDefaultSubobject<USceneComponent>("CameraPivot");
-    PlayerCollision = CreateDefaultSubobject<UBoxComponent>("PlayerCollision");
-
+	Root = CreateDefaultSubobject<USceneComponent>("Root");
+	RootComponent = Root;
+	
+	CameraPivot = CreateDefaultSubobject<USceneComponent>("Camera pivot");
+	PlayerCollision = CreateDefaultSubobject<UBoxComponent>("Player Collision");
 }
 
-// Called when the game starts or when spawned
 void ARoomManager::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
-
-// Called every frame
-void ARoomManager::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-

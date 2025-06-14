@@ -1,129 +1,124 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "ArcherPlayerController.h"
 
+#include "Archer/Camera/ArcherPlayerCameraManager.h"
+#include "Archer/Character/ArcherCharacter.h"
+#include "Archer/General/ArcherGameMode.h"
+#include "Archer/TimeManagement/SlowTimeManager.h"
+
 #include "GameFramework/PlayerInput.h"
+
 #include "Kismet/GameplayStatics.h"
-
-
-#include "../Camera/ArcherPlayerCameraManager.h"
-#include "../Character/ArcherCharacter.h"
-#include "../General/ArcherGameMode.h"
-#include "../TimeManagement/SlowTimeManager.h"
-
-
-
-
-
 
 AArcherPlayerController::AArcherPlayerController()
 {
-    PlayerCameraManagerClass = AArcherPlayerCameraManager::StaticClass();
-    bShowMouseCursor = true;
-    bShouldPerformFullTickWhenPaused = true;
-    SlowTimeManager = CreateDefaultSubobject<USlowTimeManager>(TEXT("SlowTimeManager"));
-    InputMode = FInputModeGameAndUI();
-
+	PlayerCameraManagerClass = AArcherPlayerCameraManager::StaticClass();
+	bShowMouseCursor = true;
+	bShouldPerformFullTickWhenPaused = true;
+	SlowTimeManager = CreateDefaultSubobject<USlowTimeManager>("Slow time manager");
+	InputMode = FInputModeGameAndUI();
 }
-
 
 void AArcherPlayerController::Initialize()
 {
-    ArcherCharacter = Cast<AArcherCharacter>(GetCharacter());
-    ArcherCharacter->Initialize(SlowTimeManager);
-    CameraManager->Initialize(SlowTimeManager);
+	ArcherCharacter = Cast<AArcherCharacter>(GetCharacter());
+	ArcherCharacter->Initialize(SlowTimeManager);
+	CameraManager->Initialize(SlowTimeManager);
 
-    // SetInputMode(InputMode);
-    SlowTimeManager->SetWorldContext(this);
-    SetNormalMode();
+	//SetInputMode(InputMode);
+	SlowTimeManager->SetWorldContext(this);
+	SetNormalMode();
 }
 
 void AArcherPlayerController::PreInitializeComponents()
 {
-    Super::PreInitializeComponents();
+	Super::PreInitializeComponents();
 }
 
 void AArcherPlayerController::PostInitializeComponents()
 {
-    Super::PostInitializeComponents();
+	Super::PostInitializeComponents();
 
-    CurrentGameMode = Cast<AArcherGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-    CameraManager = Cast<AArcherPlayerCameraManager>(PlayerCameraManager);
+	CurrentGameMode = Cast<AArcherGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+	CameraManager = Cast<AArcherPlayerCameraManager>(PlayerCameraManager);
 }
-
-
 
 void AArcherPlayerController::SetupInputComponent()
 {
-    Super::SetupInputComponent();
+	Super::SetupInputComponent();
 
- //    InputComponent->BindAction("Pause", IE_Pressed, this, &AArcherPlayerController::OnPausePressed);
-    // InputComponent->BindAction("OrbitMode", IE_Pressed, this, &AArcherPlayerController::OnSlowModePressed);
+	//TODO -> transfer into Blueprints for the automatic name changing
+	InputComponent->BindAction("Pause", IE_Pressed, this, &AArcherPlayerController::OnPausePressed);
+	InputComponent->BindAction("OrbitMode", IE_Pressed, this, &AArcherPlayerController::OnSlowModePressed);
 
-    // InputComponent->BindAction("Rotate Left", IE_Pressed, CameraManager, &AArcherPlayerCameraManager::RotateLeft);
-    // InputComponent->BindAction("Rotate Right", IE_Pressed, CameraManager, &AArcherPlayerCameraManager::RotateRight);
+	InputComponent->BindAction("Rotate Left", IE_Pressed, CameraManager, &AArcherPlayerCameraManager::RotateLeft);
+	InputComponent->BindAction("Rotate Right", IE_Pressed, CameraManager, &AArcherPlayerCameraManager::RotateRight);
 }
 
 void AArcherPlayerController::InitInputSystem()
 {
-    Super::InitInputSystem();
+	Super::InitInputSystem();
 
-    /*#if ARCHER_WITH_EDITOR
-        // We need to reset it back
-        PlayerInput->SetBind(TEXT("F1"), TEXT("viewmode wireframe"));
-        PlayerInput->SetBind(TEXT("F9"), TEXT("shot showui"));
-        PlayerInput->SetBind(TEXT("F5"), TEXT("viewmode ShaderComplexity"));
-    #endif*/
+/*#if ARCHER_WITH_EDITOR
+	// We need to reset it back
+	PlayerInput->SetBind(TEXT("F1"), TEXT("viewmode wireframe"));
+	PlayerInput->SetBind(TEXT("F9"), TEXT("shot showui"));
+	PlayerInput->SetBind(TEXT("F5"), TEXT("viewmode ShaderComplexity"));
+#endif*/
 }
 
 void AArcherPlayerController::OnSlowModePressed()
 {
-     if(CurrentGameMode->GetCurrentGameplayMode() != AArcherGameMode::Orbital){
-         SetOrbitalMode();
-     }else{
-         SetNormalMode();
-     }
-
+	if(CurrentGameMode->GetCurrentGameplayMode() != AArcherGameMode::Orbital)
+	{
+		SetOrbitalMode();
+	}
+	else
+	{
+		SetNormalMode();
+	}
 }
 
 void AArcherPlayerController::OnPausePressed()
 {
-    if(bIsPaused){
-        UGameplayStatics::SetGlobalTimeDilation(ArcherCharacter , 1.f);
-        CameraManager->SetOrbitalCameraView();
-    }else{
-        UGameplayStatics::SetGlobalTimeDilation(ArcherCharacter , 0.f);
-        CameraManager->SetNormalCameraView();
-    }
+	if(bIsPaused)
+	{
+		UGameplayStatics::SetGlobalTimeDilation(ArcherCharacter, 1.f);
+		CameraManager->SetOrbitalCameraView();
+	}
+	else
+	{
+		UGameplayStatics::SetGlobalTimeDilation(ArcherCharacter, 0.0f);
+		CameraManager->SetNormalCameraView();
+	}
 
-    bIsPaused = !bIsPaused;
-
+	bIsPaused = !bIsPaused;
 }
 
 void AArcherPlayerController::SetPrecisionMode()
 {
-    CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Precision);
-    ArcherCharacter->DisableMovement();
-    SlowTimeManager->SetSlowModeTimeDilation();
-    CameraManager->SetPrecisionCameraView();
-
+	CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Precision);
+	ArcherCharacter->DisableMovement();
+	SlowTimeManager->SetSlowModeTimeDilation();
+	CameraManager->SetPrecisionCameraView();
 }
 
 void AArcherPlayerController::SetNormalMode()
 {
-    CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Normal);
-    ArcherCharacter->EnableInput(this);
-    ArcherCharacter->EnableMovement();
-    SlowTimeManager->SetGlobalTimeDilation();
-    CameraManager->SetNormalCameraView();
+	CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Normal);
+	ArcherCharacter->EnableInput(this);
+	ArcherCharacter->EnableMovement();
+
+	SlowTimeManager->SetGlobalTimeDilation();
+	CameraManager->SetNormalCameraView();
 }
 
-void AArcherPlayerController::SetOrbitalMode()
+void AArcherPlayerController::SetOrbitalMode()	
 {
-    CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Orbital);
-
-    ArcherCharacter->DisableMovement();
-    SlowTimeManager->SetSlowModeTimeDilation();
-    CameraManager->SetOrbitalCameraView();
+	CurrentGameMode->SetCurrentGameplayMode(AArcherGameMode::Orbital);
+	ArcherCharacter->DisableMovement();
+	
+	SlowTimeManager->SetSlowModeTimeDilation();
+	CameraManager->SetOrbitalCameraView();
 }

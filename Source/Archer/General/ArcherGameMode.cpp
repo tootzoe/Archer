@@ -1,44 +1,31 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "ArcherGameMode.h"
 
-
-#include "Engine/World.h"
-#include "Kismet/GameplayStatics.h"
-
-#include "ArcherGameInstance.h"
 #include "ArcherGameState.h"
-#include "../Player/ArcherPlayerController.h"
-
-
-
-
-
-
-
+#include "Archer/Player/ArcherPlayerController.h"
+#include "Kismet/GameplayStatics.h"
 
 AArcherGameMode::AArcherGameMode()
 {
-    PlayerControllerClass = AArcherPlayerController::StaticClass();
-    GameStateClass = AArcherGameState::StaticClass();
-
-}
-
-void AArcherGameMode::BeforeStartPlay()
-{
-    GetWorld()->bIsCameraMoveableWhenPaused = true;
+	PlayerControllerClass = AArcherPlayerController::StaticClass();
+	GameStateClass = AArcherGameState::StaticClass();
 }
 
 void AArcherGameMode::StartPlay()
 {
-    BeforeStartPlay();
-    Super::StartPlay();
-    AfterStartPlay();
+	BeforeStartPlay();
+	Super::StartPlay();
+	AfterStartPlay();
+}
+
+void AArcherGameMode::BeforeStartPlay()
+{
+	GetWorld()->bIsCameraMoveableWhenPaused = true; // Fixes TXAA/MotionBlur glitches.
 }
 
 void AArcherGameMode::AfterStartPlay()
 {
-    PlayerController = Cast<AArcherPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(),0));
-    PlayerController->Initialize();
+	PlayerController = Cast<AArcherPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+	PlayerController->Initialize();
 }

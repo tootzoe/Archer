@@ -1,78 +1,66 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "CharacterMovement.h"
-
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
-
-
 #include "Camera/PlayerCameraManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
-
-
-
-
-FCharacterMovement::FCharacterMovement(UCharacterMovementComponent *m)
+FCharacterMovement::FCharacterMovement(UCharacterMovementComponent* MovementComponent)
 {
-    MovementComponent = m;
+	this->MovementComponent = MovementComponent;
 
-    MovementComponent->bOrientRotationToMovement = true;
-    MovementComponent->RotationRate = FRotator(0.f , 540.f, 0.f);
-    MovementComponent->JumpZVelocity = 1000.f;
-
-
-}
-
-FCharacterMovement::~FCharacterMovement()
-{
+	MovementComponent->bOrientRotationToMovement = true;
+	MovementComponent->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
+	MovementComponent->JumpZVelocity = 1000.f;
 }
 
 FVector FCharacterMovement::GetCameraRelativeForwardVector() const
 {
-    const FVector vec = CameraManager->GetActorForwardVector();
-    return GetProjectedVector(vec);
+	const FVector ForwardVector = CameraManager->GetActorForwardVector();
+	return GetProjectedVector(ForwardVector);
 }
 
 FVector FCharacterMovement::GetCameraRelativeRightVector() const
 {
-    const FVector vec = CameraManager->GetActorRightVector();
-    return GetProjectedVector(vec);
+	const FVector RightVector = CameraManager->GetActorRightVector();
+	return GetProjectedVector(RightVector);
 }
 
-void FCharacterMovement::MoveForward(float val) const
+void FCharacterMovement::MoveForward(float Value) const
 {
-    FVector ProjectedVector = GetCameraRelativeForwardVector();
-    MovementComponent->AddInputVector(ProjectedVector * val);
+	FVector ProjectedVector = GetCameraRelativeForwardVector();
+	MovementComponent->AddInputVector(ProjectedVector * Value);
 }
 
-void FCharacterMovement::MoveRight(float val) const
+void FCharacterMovement::MoveRight(float Value) const
 {
-    const FVector ProjectedVector = GetCameraRelativeRightVector();
-    MovementComponent->AddInputVector(ProjectedVector * val);
+	const FVector ProjectedVector = GetCameraRelativeRightVector();
+	MovementComponent->AddInputVector(ProjectedVector * Value);
 }
 
-void FCharacterMovement::SetCameraManager(APlayerCameraManager *cm)
+FVector FCharacterMovement::GetProjectedVector(const FVector Vector) const
 {
-    CameraManager = cm;
+	FVector ProjectedVector = UKismetMathLibrary::ProjectVectorOnToPlane(Vector, FVector::UpVector);
+	ProjectedVector.Normalize();
+	return ProjectedVector;
+}
+
+/**
+ * @brief For some reason, I can't name CameraManager parameter and property equally
+ */
+void FCharacterMovement::SetCameraManager(APlayerCameraManager* cameraManager)
+{
+	this->CameraManager = cameraManager;
 }
 
 void FCharacterMovement::SetWalkSpeed() const
 {
-    MovementComponent->MaxWalkSpeed = WalkSpeed;
+	MovementComponent->MaxWalkSpeed = WalkSpeed;
 }
 
 void FCharacterMovement::SetRunSpeed() const
 {
-    MovementComponent->MaxWalkSpeed = RunSpeed;
-}
-
-FVector FCharacterMovement::GetProjectedVector(const FVector vector) const
-{
-    FVector ProjectedVector = UKismetMathLibrary::ProjectVectorOnToPlane(vector, FVector::UpVector );
-    ProjectedVector.Normalize();
-    return ProjectedVector;
+	MovementComponent->MaxWalkSpeed = RunSpeed;
 }

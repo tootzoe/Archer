@@ -1,46 +1,20 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
-
-#include "CoreMinimal.h"
-
-#include "../../StateBase.h"
-
+#include "Archer/Character/StateMachines/StateBase.h"
 
 class FMechanicsStateMachine;
-class FStateMachineBase;
-/**
- * 
- */
-class  FMechanicStateBase : public FStateBase
+
+class FMechanicStateBase: public FStateBase
 {
 public:
-    explicit FMechanicStateBase(FStateMachineBase *MechanicsStateMachine);
+	explicit FMechanicStateBase(class FStateMachineBase* MechanicsStateMachine);
+	//virtual ~FMechanicStateBase() override;
 
-
-    virtual void Begin() override;
-    virtual void Tick(float DeltaTime) = 0;
+	virtual void Begin() override;
+	virtual void Tick(float DeltaTime) = 0;
 
 protected:
-    FMechanicsStateMachine *MechanicsStateMachine;
-    class FCharacterMechanics *CharacterMechanics;
-
+	FMechanicsStateMachine* MechanicsStateMachine;
+	class FCharacterMechanics* CharacterMechanics;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

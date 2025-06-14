@@ -1,9 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "LocomotionStateMachine.h"
 
-#include "../../ArcherCharacter.h"
+#include "Archer/Character/ArcherCharacter.h"
 #include "LocomotionStates/ClimbState.h"
 #include "LocomotionStates/DashState.h"
 #include "LocomotionStates/JumpState.h"
@@ -11,50 +10,48 @@
 #include "LocomotionStates/SlowmoState.h"
 #include "LocomotionStates/WalkState.h"
 
-
-FLocomotionStateMachine::FLocomotionStateMachine(AArcherCharacter *archer)
-    : FStateMachineBase(archer)
+FLocomotionStateMachine::FLocomotionStateMachine(AArcherCharacter* ArcherCharacter) : FStateMachineBase(ArcherCharacter)
 {
-    ArcherCharacter = archer;
-    State = (FStateBase*)( new FWalkState(this));
+	this->ArcherCharacter = ArcherCharacter;
+	State = new FWalkState(this);
 }
 
 FLocomotionStateMachine::~FLocomotionStateMachine()
 {
-    delete State;
+	delete State;
 }
 
 void FLocomotionStateMachine::SetWalkState()
 {
-    SetState<FWalkState>();
+	SetState<FWalkState>();
 }
 
 void FLocomotionStateMachine::SetRunState()
 {
-SetState<FRunState>();
+	SetState<FRunState>();
 }
 
 void FLocomotionStateMachine::SetDashState()
 {
-SetState<FDashState>();
+	SetState<FDashState>();
 }
 
 void FLocomotionStateMachine::SetJumpState()
 {
-SetState<FJumpState>();
+	SetState<FJumpState>();
 }
 
 void FLocomotionStateMachine::SetClimbState()
 {
-SetState<FClimbState>();
+	SetState<FClimbState>();
 }
 
 void FLocomotionStateMachine::SetSlowmoState()
 {
-    SetState<FSlowmoState>();
+	SetState<FSlowmoState>();
 }
 
-FMechanicsStateMachine *FLocomotionStateMachine::GetMechanicsStateMachine() const
+FMechanicsStateMachine* FLocomotionStateMachine::GetMechanicsStateMachine() const
 {
-    return ArcherCharacter->GetMechanicsStateMachine();
+	return ArcherCharacter->GetMechanicsStateMachine(); 
 }

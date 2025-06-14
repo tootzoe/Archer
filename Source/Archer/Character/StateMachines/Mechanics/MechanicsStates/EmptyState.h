@@ -1,24 +1,17 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
-
-#include "CoreMinimal.h"
-
 #include "MechanicStateBase.h"
 
-/**
- * 
- */
-class   FEmptyState : public FMechanicStateBase
+class FEmptyState: public FMechanicStateBase
 {
 public:
-    FEmptyState(FStateMachineBase *MechanicStateMachine) :
-        FMechanicStateBase(MechanicStateMachine)
-    {}
+	explicit FEmptyState(FStateMachineBase* MechanicsStateMachine)
+		: FMechanicStateBase(MechanicsStateMachine)
+	{
+	}
 
-
-    virtual void Begin() override;
-    virtual void End() override;
-    virtual void Tick(float DeltaTime) override;
-
+	virtual void Begin() override;
+	virtual void End() override;
+	virtual void Tick(float DeltaTime) override;
 };

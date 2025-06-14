@@ -1,21 +1,15 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
-
-#include "CoreMinimal.h"
-
 #include "LocomotionStateBase.h"
 
-/**
- * 
- */
-class  FWalkState : public FLocomotionStateBase
+class FWalkState: public FLocomotionStateBase
 {
 public:
-    explicit FWalkState(FStateMachineBase *StateMachin);
-    ~FWalkState();
+	explicit FWalkState(FStateMachineBase* StateMachine) : FLocomotionStateBase(StateMachine)
+	{
+	}
 
-    virtual void Begin() override;
-    virtual void End() override;
-
+	virtual void Begin() override;
+	virtual void End() override;
 };

@@ -85,3 +85,5 @@ DEFINES += "checkf" "check" "checkAtCompileTime" "checkCode" "checkfSlow" "check
 DEFINES += "checkName" "checkNoEntry" "checkNoRecursion" "checkNoReentry" "checkSlow" "checkStats"
 ## online subsystem
 DEFINES += "NAME_GameSession" "_Implementation"
+## 18in1
+DEFINES += "LOCTEXT_NAMESPACE"

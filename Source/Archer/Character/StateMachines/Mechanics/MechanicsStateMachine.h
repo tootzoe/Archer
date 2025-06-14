@@ -1,67 +1,34 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
+#include "Archer/Character/StateMachines/StateMachineBase.h"
 
-#include "CoreMinimal.h"
-
-
-#include "../StateMachineBase.h"
-
-
-
-
-
-/**
- * 
- */
-class FMechanicsStateMachine : public FStateMachineBase
+class FMechanicsStateMachine: public FStateMachineBase
 {
-
-
 public:
-   explicit  FMechanicsStateMachine(AArcherCharacter *ArcherCharacter);
-    ~FMechanicsStateMachine();
+	explicit FMechanicsStateMachine(AArcherCharacter* ArcherCharacter);
 
-    ActionSignature StartAimingDelegate;
-    ActionSignature StopAimingDelegate;
-    ActionSignature StartShootingDelegate;
-    ActionSignature StoptShootingDelegate;
-    ActionSignature StartFreeAimDelegate;
-    ActionSignature StopFreeAimDelegate;
+	ActionSignature StartAimingDelegate;
+	ActionSignature StopAimingDelegate;
+	ActionSignature StartShootingDelegate;
+	ActionSignature StopShootingDelegate;
+	ActionSignature StartFreeAimDelegate;
+	ActionSignature StopFreeAimDelegate;
 
-    MovementSignature AimXValueDelegate;
-    MovementSignature AimYValueDelegate;
-
-    void Tick(float DeltaTime);
-
-    void SetEmptyState();
-    void SetAimReadyState();
-    void SetFreeAimState();
-    void SetAutoAimState();
-    void SetPrecisionAimState();
-
-
+	MovementSignature AimXValueDelegate;
+	MovementSignature AimYValueDelegate;
+	
+	void Tick(float DeltaTime);
+	
+	void SetEmptyState();
+	void SetAimReadyState();
+	void SetFreeAimState();
+	void SetAutoAimState();
+	void SetPrecisionAimState();
+	
 protected:
-    virtual void SetSpecificState() override;
-
+	virtual void SetSpecificState() override;
 
 private:
-    class FMechanicStateBase* MechanicState;
-
+	class FMechanicStateBase* MechanicState;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,66 +1,29 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
-#include "CoreMinimal.h"
-
-
-
-
-class APlayerCameraManager ;
+class APlayerCameraManager;
 class UCharacterMovementComponent;
 
-/**
- * 
- */
-class  FCharacterMovement
+class FCharacterMovement
 {
 public:
-    explicit FCharacterMovement(UCharacterMovementComponent *MovementComponent);
-    ~FCharacterMovement();
+	explicit FCharacterMovement(UCharacterMovementComponent* MovementComponent);
+	FVector GetCameraRelativeForwardVector() const;
+	FVector GetCameraRelativeRightVector() const;
 
-    FVector GetCameraRelativeForwardVector() const;
-    FVector GetCameraRelativeRightVector() const;
+	void MoveForward(float Value) const;
+	void MoveRight(float Value) const;
+	void SetCameraManager(APlayerCameraManager* cameraManager);
+	void SetWalkSpeed() const;
+	void SetRunSpeed() const;
 
-    void MoveForward(float val) const;
-    void MoveRight(float val) const;
-    void SetCameraManager(APlayerCameraManager *cm);
-    void SetWalkSpeed() const;
-    void SetRunSpeed() const;
+private:
+	const float WalkSpeed = 500.f;
+	const float RunSpeed = 800.f;
 
-
-   private:
-
-    const float WalkSpeed = 500.f;
-    const float RunSpeed = 800.f;
-
-    UCharacterMovementComponent *MovementComponent;
-    APlayerCameraManager *CameraManager;
-
-    FVector GetProjectedVector(const FVector vector) const;
-
+	APlayerCameraManager* CameraManager;
+	UCharacterMovementComponent* MovementComponent;
+	
+	FVector GetProjectedVector(FVector Vector) const;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

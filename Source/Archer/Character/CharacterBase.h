@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
@@ -6,45 +6,33 @@
 #include "GameFramework/Character.h"
 #include "CharacterBase.generated.h"
 
-
-
-
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FCharacterDeadSignature);
 
-
 UCLASS(Abstract)
-class ARCHER_API ACharacterBase : public ACharacter
+class ARCHER_API ACharacterBase : public ACharacter //APawn
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	ACharacterBase();
 
-    virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime) override;
 
-// Called to bind functionality to input
-    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	UFUNCTION(BlueprintCallable)
+	bool IsAlive() const;
 
-    UFUNCTION(BlueprintCallable)
-    bool IsAlive() const;
-
-    virtual void Hit();
-
-    UPROPERTY(BlueprintAssignable)
-    FCharacterDeadSignature OnCharacterDead;
-
+	virtual void Hit();
+	
+	UPROPERTY(BlueprintAssignable)
+	FCharacterDeadSignature OnCharacterDead;
+	
 protected:
-	// Called when the game starts or when spawned
+
+	int Health;
+	
 	virtual void BeginPlay() override;
-    virtual void Die();
-
-
-    protected:
-    int Health;
+	virtual void Die();
 
 private:
-    const int MAX_HEALTH = 1;
-
-
+	const int MAX_HEALTH = 1;
 };

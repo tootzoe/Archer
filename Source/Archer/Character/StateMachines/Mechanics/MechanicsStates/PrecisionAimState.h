@@ -1,36 +1,27 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
-
-#include "CoreMinimal.h"
-
 #include "MechanicStateBase.h"
 
-
-
-/**
- * 
- */
-class  FPrecisionAimState : public FMechanicStateBase
+class FPrecisionAimState: public FMechanicStateBase
 {
 public:
-    FPrecisionAimState(FStateMachineBase *MechanicStateMachine) :
-        FMechanicStateBase(MechanicStateMachine)
-    {}
+	FPrecisionAimState(FStateMachineBase* MechanicsStateMachine) : FMechanicStateBase(MechanicsStateMachine)
+	{
+	}
+	
+	virtual void Begin() override;
+	virtual void End() override;
+	virtual void Tick(float DeltaTime) override;
+	
 
-    virtual void Begin() override;
-    virtual void End() override;
-    virtual void Tick(float DeltaTime) override;
+private:
+	AActor* TargetActor;
+	FVector Offset;
 
-    private:
-    class AActor *TargetActor;
-    FVector Offset;
+	const float OffsetInputRelation = 5.f;
 
-    const float OffsetInputRelation = 5.f;
-
-    void SetPrecisionXOffset(float val);
-    void SetPrecisionYOffset(float val);
-    void ReleaseAndSetAutoAimState(  ) const;
-
-
+	void SetPrecisionXOffset(float Value);
+	void SetPrecisionYOffset(float Value);
+	void ReleaseAndSetAutoAimState() const;
 };

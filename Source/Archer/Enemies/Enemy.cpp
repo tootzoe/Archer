@@ -1,38 +1,35 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #include "Enemy.h"
-
 
 #include "Components/CapsuleComponent.h"
 
 
-
 AEnemy::AEnemy()
 {
-    PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = true;
 
-    bUseControllerRotationYaw= true;
-
+	bUseControllerRotationYaw = true;
 }
+
 void AEnemy::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
 }
 
-
-
-void AEnemy::Tick(float DeltaSeconds)
+void AEnemy::Tick(float DeltaTime)
 {
-    Super::Tick(DeltaSeconds);
+	Super::Tick(DeltaTime);
 }
 
 void AEnemy::Die()
 {
-    Super::Die();
-
-    GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
-
-    if(Controller){
-        Controller->UnPossess();
-    }
+	Super::Die();
+	
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	if(Controller)
+	{
+		Controller->UnPossess();
+	}
 }
+

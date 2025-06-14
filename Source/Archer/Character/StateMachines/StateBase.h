@@ -1,18 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
-#include "CoreMinimal.h"
-
-/**
- * 
- */
-class  FStateBase
+class FStateBase
 {
 public:
-   // FStateBase();
-    virtual ~FStateBase(){;}
-
-    virtual void Begin() = 0;
-    virtual void End() = 0;
+	virtual ~FStateBase(){};
+	
+	virtual void Begin() = 0;
+	virtual void End() = 0;
 };

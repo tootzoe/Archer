@@ -1,44 +1,33 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
+#include "Archer/Character/StateMachines/StateMachineBase.h"
 
-#include "CoreMinimal.h"
-
-#include "../StateMachineBase.h"
-
-class FMechanicsStateMachine;
-
-
-/**
- * 
- */
-class  FLocomotionStateMachine : public FStateMachineBase
+class FLocomotionStateMachine: public FStateMachineBase
 {
 public:
-    explicit FLocomotionStateMachine(AArcherCharacter *archer);
-    ~FLocomotionStateMachine();
+	explicit FLocomotionStateMachine(AArcherCharacter* ArcherCharacter);
+	~FLocomotionStateMachine();
+	
+	MovementSignature MoveForwardDelegate;
+	MovementSignature MoveRightDelegate;
+	ActionSignature StartRunDelegate;
+	ActionSignature StopRunDelegate;
+	ActionSignature StartFreeAimDelegate;
+	ActionSignature StopFreeAimDelegate;
+	ActionSignature DashDelegate;
+	ActionSignature StartClimbDelegate;
+	ActionSignature StopClimbDelegate;
 
-    MovementSignature MoveForwardDelegate;
-    MovementSignature MoveRightDelegate;
-    ActionSignature StartRunDelegate;
-    ActionSignature StopRunDelegate;
-    ActionSignature StartFreeAimDelegate;
-    ActionSignature StopFreeAimDelegate;
-    ActionSignature DashDelegate;
-    ActionSignature StartClimbDelegate;
-    ActionSignature StopClimbDelegate;
+	void SetWalkState();
+	void SetRunState();
+	void SetDashState();
+	void SetJumpState();
+	void SetClimbState();
+	void SetSlowmoState();
 
-
-    void SetWalkState();
-    void SetRunState();
-    void SetDashState();
-    void SetJumpState();
-    void SetClimbState();
-    void SetSlowmoState();
-
-    FMechanicsStateMachine *GetMechanicsStateMachine() const;
-
+	class FMechanicsStateMachine* GetMechanicsStateMachine() const;
+	
 protected:
-    virtual void SetSpecificState() override {;}
-
+	virtual void SetSpecificState() override{};
 };

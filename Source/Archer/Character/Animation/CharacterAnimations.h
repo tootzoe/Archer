@@ -1,45 +1,26 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Copyright (c) Guillem Serra. All Rights Reserved.
 
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-
-#include "CharacterAnimationSlots.h"
-#include "CharacterAnimationStates.h"
-
-
-
-
+#include "CharacterAnimInstance.h"
 
 #include "CharacterAnimations.generated.h"
 
-
 class UCharacterAnimInstance;
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS()
 class ARCHER_API UCharacterAnimations : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
-	UCharacterAnimations();
-
-    virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-    void Initialize(UCharacterAnimInstance *AnimInstance);
-    void SetLocomotionState(ECharacterLocomotionState State) const;
-    void SetAttactState(ECharacterAttactState State) const;
-    void SetOrientationType(EOrientationType OrientaionType);
-
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+public:
+	void Initialize(UCharacterAnimInstance* animInstance);
+	void SetLocomotionState(ECharacterLocomotionState State) const;
+	void SetAttackState(ECharacterAttackState State) const;
+	void SetOrientationType(EOrientationType OrientationType);
 
 private:
-    UPROPERTY()
-    UCharacterAnimInstance *AnimaInstance;
-
-		
+	UPROPERTY()
+	UCharacterAnimInstance* AnimInstance;
 };
