@@ -4,6 +4,8 @@
 tootbd/
 Content/TmpTest/
 
+*.pro.user
+README.md
 
 
 # Compiled Object files
